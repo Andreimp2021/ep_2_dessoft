@@ -4,3 +4,10 @@ def cria_baralho():
 
     return lista 
 
+def extrai_naipe(carta):
+    if len(carta) <= 2:
+        e = carta[1]
+        return e
+    elif len(carta) == 3:
+        e = carta[2]
+        return e
