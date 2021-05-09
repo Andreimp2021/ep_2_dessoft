@@ -11,3 +11,14 @@ def extrai_naipe(carta):
     elif len(carta) == 3:
         e = carta[2]
         return e
+
+
+def extrai_valor(carta):
+    if len(carta) <= 1:
+        e = carta[1]
+        return e
+    elif len(carta) == 3:
+        e = carta[0] + carta[1]
+        return e 
+
+blablabla
