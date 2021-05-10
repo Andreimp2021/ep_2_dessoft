@@ -32,8 +32,18 @@ while i <= 52:
     i += 1
 
 print("")
-b = input("Escolha uma carta (digite um número entre 1 e 52): ")
+a = input("Escolha uma carta (digite um número entre 1 e 52): ")
 print("")
-print("O estado atual do baralho é: ")
+
+while Pasta_com_funções.possui_movimentos_possiveis(lista) == True:
+    if Pasta_com_funções.possui_movimentos_possiveis(lista) == True:
+        a = input("Escolha uma carta (digite um número entre 1 e 52): ")
+    else:
+        Pasta_com_funções. possui_movimentos_possiveis(lista) = False:
+
+while Pasta_com_funções.possui_movimentos_possiveis(lista) == False:
+    b = input("A carta {a} não pode ser movida. Por favor, digite um número entre 1 e 52".format(a))
+if Pasta_com_funções.possui_movimentos_possiveis(lista) == True
+ Pasta_com_funções. possui_movimentos_possiveis(lista) = False:
 
 
