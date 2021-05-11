@@ -29,7 +29,7 @@ lista = ["A♠" ,"K♠" ,"Q♠" ,"J♠" ,"10♠" ,"9♠" ,"8♠" ,"7♠" ,"6♠"
 baralho = sample(lista,52)
 i = 1
 while i <= 52:
-    print("{0}. {1}".format(i,x[i-1]))
+    print("{0}. {1}".format(i,baralho[i-1]))
     i += 1
 
 print("")
@@ -38,12 +38,15 @@ indice = int(input("Escolha uma carta (digite um número entre 1 e 52): "))
 lista2 = []
 
 while Pasta_com_funções.possui_movimentos_possiveis(lista) == True:
+    while indice > len(baralho) or indice < 1:
+        indice = int(input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(len(baralho))))
+
     if Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [1]:
-        destino = baralho[indice-1]
+        destino = baralho[indice-2]
         baralho = Pasta_com_funções.empilha(baralho,indice, destino)
     
     elif  Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [3]:
-        destino = baralho[indice-3]
+        destino = baralho[indice-4]
         baralho = Pasta_com_funções.empilha(baralho,indice, destino)
 
     elif Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) ==  [1 ,3]:
@@ -55,33 +58,16 @@ while Pasta_com_funções.possui_movimentos_possiveis(lista) == True:
             destino = baralho[indice-3]
 
         else:
-            while pergunta != 1 or pergunta != 2:
+            while pergunta != 1 or pergunta != 2: # botar pra letras também
                 pergunta = int(input("Opção inválida. Sobre qual carta você quer empilhar o {0}?\n 1. {1}\n 2.{2} ".format(baralho[indice], baralho[indice-1], baralho[indice-3])))
             if pergunta == 1:
                 destino = baralho[indice-1]
-
+                
             elif pergunta == 2:
                 destino = baralho[indice-3]
-
-        baralho = Pasta_com_funções.empilha(baralho,indice, destino)
-    else:
-        while indice > len(baralho) or indice < 1:
-            print("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(len(baralho)))
             
 
-
-
-
-
-
-
-            print("")
-            # empilhar e retornar lista
     
-        else:
-            b = input ("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e 52: ".format(indice)) 
-            # empilhar e retornar baralho
-    pri
 print("você perdeu :(")
 
   
