@@ -24,18 +24,21 @@ def lista_movimentos_possiveis(lista, indice):
     lista2 = []
     if indice == 0:
         return []
+    else:
+        if extrai_naipe(lista[indice]) == extrai_naipe(lista[indice-1]) or  extrai_valor(lista[indice]) == extrai_valor(lista[indice-1]):
+            lista2.append(1)
 
-    if extrai_naipe(lista[indice]) == extrai_naipe(lista[indice-1]) or  extrai_valor(lista[indice]) == extrai_valor(lista[indice-1]):
-             lista2.append(1)
-
-    if indice >= 3 and (extrai_naipe(lista[indice]) == extrai_naipe(lista[indice-3]) or  extrai_valor(lista[indice]) == extrai_valor(lista[indice-3])):
-             lista2.append(3)
+        if indice >= 3:
+            if (extrai_naipe(lista[indice]) == extrai_naipe(lista[indice-3]) or  extrai_valor(lista[indice]) == extrai_valor(lista[indice-3])):
+                lista2.append(3)
 
     return lista2
   
 def empilha(baralho, o, d):
-    baralho[d] = baralho[o]
-    del baralho[o]
+    o = int(o)
+    d = int(d)
+    baralho[d-1] = baralho[o-1]
+    del baralho[o-1]
     return baralho
 
 def extrai_valor(carta):

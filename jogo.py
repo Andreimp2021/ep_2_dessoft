@@ -33,41 +33,42 @@ while i <= 52:
     i += 1
 
 print("")
-indice = int(input("Escolha uma carta (digite um número entre 1 e 52): "))
+indice = input("Escolha uma carta (digite um número entre 1 e 52): ")
 
 lista2 = []
 
 while Pasta_com_funções.possui_movimentos_possiveis(lista) == True:
-    while indice > len(baralho) or indice < 1:
-        indice = int(input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(len(baralho))))
-
-    if Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [1]:
-        destino = baralho[indice-2]
-        baralho = Pasta_com_funções.empilha(baralho,indice, destino)
+    while int(indice) > len(baralho) or int(indice) < 1:
+        indice = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(len(baralho)))
     
-    elif  Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [3]:
-        destino = baralho[indice-4]
-        baralho = Pasta_com_funções.empilha(baralho,indice, destino)
+    indice = int(indice)
+    movimento = True
+    while movimento == True:
+        print(Pasta_com_funções.lista_movimentos_possiveis(baralho,indice))
+        if Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [1]:
+            destino = indice-1
+            baralho = Pasta_com_funções.empilha(baralho,indice, destino)
+            movimento = False
 
-    elif Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) ==  [1 ,3]:
-        pergunta = int(input("Sobre qual carta você quer empilhar o {0}?\n 1. {1}\n 2.{2} ".format(baralho[indice], baralho[indice-1], baralho[indice-3])))
-        if pergunta == 1:
-            destino = baralho[indice-1]
+        elif Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) == [3]:
+            destino = indice-3
+            baralho = Pasta_com_funções.empilha(baralho,indice, destino)
+            movimento = False
 
-        elif pergunta == 2:
-            destino = baralho[indice-3]
+        elif Pasta_com_funções.lista_movimentos_possiveis(baralho, indice) ==  [1 ,3]:
+            pergunta = int(input("Sobre qual carta você quer empilhar o {0}?\n 1. {1}\n 2.{2} ".format(baralho[indice-1], baralho[indice-2], baralho[indice-4])))
+            while pergunta != 1 or pergunta != 2:
+                pergunta = int(input("Opção inválida. Sobre qual carta você quer empilhar o {0}?\n 1. {1}\n 2.{2} ".format(baralho[indice-1], baralho[indice-2], baralho[indice-4])))
+            if pergunta == 1:
+                destino = indice-2
+                baralho = Pasta_com_funções.empilha(baralho,indice, destino)
+            elif pergunta == 2:
+                destino = indice-4
+                baralho = Pasta_com_funções.empilha(baralho,indice,destino)
 
         else:
-            while pergunta != 1 or pergunta != 2: # botar pra letras também
-                pergunta = int(input("Opção inválida. Sobre qual carta você quer empilhar o {0}?\n 1. {1}\n 2.{2} ".format(baralho[indice], baralho[indice-1], baralho[indice-3])))
-            if pergunta == 1:
-                destino = baralho[indice-1]
-                
-            elif pergunta == 2:
-                destino = baralho[indice-3]
-            
+            indice = int(input("A carta {0} não pode ser movida, insira outro número.".format(baralho[indice-1])))
 
-    
 print("você perdeu :(")
 
   
